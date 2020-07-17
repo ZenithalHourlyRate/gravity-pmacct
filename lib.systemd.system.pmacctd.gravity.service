@@ -1,0 +1,10 @@
+[Unit]
+Description=promiscuous mode accounting daemon
+After=rait.service
+
+[Service]
+EnvironmentFile=-/etc/default/pmacctd.gravity
+ExecStart=ip netns exec gravity pmacctd -f ${PMACCTD_CONF} $DAEMON_OPTS
+
+[Install]
+WantedBy=multi-user.target
